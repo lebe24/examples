@@ -1,6 +1,8 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: lebecloud
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: awsnode
 service: aws-node # NOTE: update this with your service name
-
-frameworkVersion: '4'
 
 provider:
   name: aws
@@ -9,3 +11,8 @@ provider:
 functions:
   hello:
     handler: handler.hello
+    events:
+            - http:
+                  path: get-user/
+                  method: GET
+                  cors: true
